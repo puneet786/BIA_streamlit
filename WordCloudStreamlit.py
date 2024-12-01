@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import bs4
 import requests
 
-st.set_option('deprecation.showPyplotGlobalUse', False)
+# st.set_option('deprecation.showPyplotGlobalUse', False)
 
 st.title('Simple WordCloud App for BIA')
 
