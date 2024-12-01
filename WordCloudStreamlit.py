@@ -90,7 +90,7 @@ if URL is not None:
 plt.imshow(wordcloud, interpolation = 'bilinear')
 plt.axis("off")
 plt.show()
-st.pyplot()
+st.pyplot(plt)
 
 st.subheader("Top 10 words")
 st.write(top_words_dict)
