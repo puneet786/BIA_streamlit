@@ -4,29 +4,15 @@ import pandas as pd
 import pickle
 
 # Load models from pickle files
-def load_model(file_path):
+def load_model():
+    file_path = "https://github.com/puneet786/BIA_streamlit/blob/c23d9021c55fe2b582cffdb988727f7fe471d183/lr_model.pkl"
     with open(file_path, 'rb') as file:
         return pickle.load(file)
 
 models = {
     'Linear Regression': load_model('linear_regression_model.pkl'),
-    'Random Forest Regressor': load_model('random_forest_model.pkl')
+    # 'Random Forest Regressor': load_model('random_forest_model.pkl')
 }
-
-# Mock dataset for demonstration purposes
-data = pd.DataFrame({
-    'age': np.random.randint(18, 81, 500),
-    'bmi': np.random.uniform(12, 80, 500),
-    'gender': np.random.choice(['male', 'female'], 500),
-    'children': np.random.choice([0, 1, 2, 3], 500),
-    'smoker': np.random.choice(['yes', 'no'], 500),
-    'region': np.random.choice(['northeast', 'southeast', 'northwest', 'southwest'], 500),
-    'charges': np.random.uniform(1000, 50000, 500),
-})
-
-# Preprocessing
-X = pd.get_dummies(data.drop(columns=['charges']), drop_first=True)
-y = data['charges']
 
 # Streamlit app
 st.title("Insurance Charges Prediction App")
@@ -51,16 +37,11 @@ if submit_button:
     input_data = pd.DataFrame({
         'age': [age],
         'bmi': [bmi],
-        'gender_male': [1 if gender == "male" else 0],
-        'children': [int(children[0]) if children != "3+" else 3],
-        'smoker_yes': [1 if smoker == "yes" else 0],
-        'region_northwest': [1 if region == "northwest" else 0],
-        'region_southeast': [1 if region == "southeast" else 0],
-        'region_southwest': [1 if region == "southwest" else 0],
+        'sex': [gender],
+        'children': [str(children[0]) if children != "3+" else "GTE_3"],
+        'smoker': [smoker],
+        'region': [region],
     })
-    
-    # Align with model input
-    input_data = input_data.reindex(columns=X.columns, fill_value=0)
 
     # Make prediction
     prediction = selected_model.predict(input_data)[0]
