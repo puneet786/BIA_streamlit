@@ -2,3 +2,4 @@ bs4
 wordcloud
 requests
 statsmodels
+joblib
