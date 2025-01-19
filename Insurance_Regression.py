@@ -41,7 +41,7 @@ if submit_button:
         'age': [age],
         'bmi': [bmi],
         'sex': [gender],
-        'children': [str(children[0]) if children != "3+" else "GTE_3"],
+        'children_mod': [str(children[0]) if children != "3+" else "GTE_3"],
         'smoker': [smoker],
         'region': [region],
     })
