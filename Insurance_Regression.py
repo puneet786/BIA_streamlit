@@ -47,7 +47,7 @@ if submit_button:
     })
 
     # Make prediction
-    prediction = selected_model.predict(input_data)[0]
+    prediction = np.exp(selected_model.predict(input_data)[0])
 
     # Display results
     st.subheader(f"Predicted Charges: ${prediction:,.2f}")
