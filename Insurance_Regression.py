@@ -4,12 +4,13 @@ import pandas as pd
 import pickle
 import requests
 from io import BytesIO
+import joblib
 
 # Load models from pickle files
 def load_model(model_type):
     file_path = "https://github.com/puneet786/BIA_streamlit/blob/c23d9021c55fe2b582cffdb988727f7fe471d183/lr_model.pkl"
     # with open(file_path, 'rb') as file:
-    return pickle.load(BytesIO(requests.get(file_path).content))
+    return joblib.load(BytesIO(requests.get(file_path).content))
 
 models = {
     'Linear Regression': load_model('linear_regression_model'),
