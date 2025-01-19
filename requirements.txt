@@ -3,4 +3,4 @@ wordcloud
 requests
 statsmodels
 joblib
-sklearn
+scikit-learn
