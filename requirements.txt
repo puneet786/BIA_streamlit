@@ -2,4 +2,3 @@ bs4
 wordcloud
 requests
 statsmodels
-pandas==1.5.3
