@@ -39,8 +39,8 @@ if submit_button:
     # Convert inputs to model-compatible format
     input_data = pd.DataFrame({
         'age': [age],
-        'bmi': [bmi],
         'sex': [gender],
+        'bmi': [bmi],
         'children_mod': [str(children[0]) if children != "3+" else "GTE_3"],
         'smoker': [smoker],
         'region': [region],
